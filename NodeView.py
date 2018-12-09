@@ -3,7 +3,6 @@ from PyQt5.QtWidgets import QGraphicsObject
 from PyQt5.QtCore import Qt
 
 from NodePainter import NodePainter
-from PortView import PortView
 
 class NodeView(QGraphicsObject):
 
