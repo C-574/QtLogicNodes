@@ -39,8 +39,9 @@ class MainWindow(QMainWindow):
         self.graphicsView.setObjectName("graphicsView")
         self.graphicsView.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
         self.graphicsView.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
+        self.graphicsView.setRenderHint(QPainter.Antialiasing)
         self.setCentralWidget(self.graphicsView)
-
+        
         self.scene = QGraphicsScene()
         self.graphicsView.setScene(self.scene)
 

@@ -36,6 +36,4 @@ class NodeView(QGraphicsObject):
 
         # Draw the bouds for debugging
         # painter.drawRect(NodePainter.getNodeBounds(self.node))
-        NodePainter.drawNode(painter, self)
-
-        painter.drawText(20, 10, self.title)
+        NodePainter.drawNode(painter, self.isSelected(), self)

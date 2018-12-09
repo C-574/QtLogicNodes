@@ -1,5 +1,5 @@
-from PyQt5.QtCore import QPointF, QRectF
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QPointF, QRectF
+from PyQt5.QtGui import QColor, QPen, QFontMetrics
 
 PORT_RADIUS = 5
 NODE_WIDTH = 50
@@ -45,18 +45,26 @@ class NodePainter:
     def drawPort(painter, isOutput, portIndex, portData):
         pos = NodePainter.getPortPos(isOutput, portIndex)
 
+        color = QColor(20, 20, 20)
+
         if portData == 0:
-            painter.setBrush(Qt.red)
+            color = QColor(255, 0, 0)
         elif portData == 1:
-            painter.setBrush(Qt.green)
-        else:
-            painter.setBrush(Qt.darkGray)
+            color = QColor(0, 255, 0)
+
+        painter.setBrush(color)
+        painter.setPen(QPen(color.darker(200), 2.0))
 
         painter.drawEllipse(pos, PORT_RADIUS, PORT_RADIUS)
 
     @staticmethod
-    def drawNode(painter, node):
+    def drawNode(painter, isSelected, node):
         rect = NodePainter.getNodeDim(node)
+
+        if isSelected:
+            painter.setPen(QPen(Qt.cyan, 3.0))
+        else:
+            painter.setPen(Qt.black)
 
         painter.setBrush(Qt.gray)
         painter.drawRect(rect)
@@ -67,4 +75,13 @@ class NodePainter:
         #for index, port in enumerate(node.node.value):
         #    NodePainter.drawPort(painter, False, index, node.data.getOutput(index))
         NodePainter.drawPort(painter, True, 0, node.data.getOutput(0))
-        
+
+        metrics = QFontMetrics(painter.font())
+        textBounds = metrics.boundingRect(node.title)
+
+        painter.setPen(QColor(0, 0, 0, 128))
+        painter.setBrush(QColor(0, 0, 0, 128))
+
+        textRect = QRectF((rect.width() - textBounds.width()) / 2.0, (rect.height() - textBounds.height()) / 2.0 - 3.5, textBounds.width(), textBounds.height())
+        painter.drawText(textRect.bottomLeft(), node.title)
+      

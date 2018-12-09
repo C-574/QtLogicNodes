@@ -11,7 +11,7 @@ class ValueNode(LogicNode):
 
 class ValueNodeView(NodeView):
     def __init__(self, value, parent=None):
-        super().__init__(ValueNode(value), "", parent)
+        super().__init__(ValueNode(value), "Value", parent)
 
         self.dataChanged.connect(self.debugPrint)
 
