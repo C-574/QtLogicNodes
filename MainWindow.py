@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QGraphicsView, QGraphicsScene, QAction
-from PyQt5.QtGui import QPainter, QColor, QFont
+from PyQt5.QtGui import QPainter, QColor, QFont, QKeySequence
 from PyQt5.QtCore import Qt
 
 from NodeView import NodeView
@@ -25,9 +25,16 @@ class MainWindow(QMainWindow):
         self.setGeometry(50, 150, 640, 480)
 
         mainMenu = self.menuBar()
-        editMenu = mainMenu.addMenu("Edit")
+        fileMenu = mainMenu.addMenu(self.tr("&File"))
+        editMenu = mainMenu.addMenu(self.tr("&Edit"))
 
-        toggleAction = QAction("Toggle State", self)
+        quitAction = QAction(self.tr("&Quit"), self)
+        quitAction.setShortcut(QKeySequence.Quit)
+        quitAction.setStatusTip(self.tr("Quit the application"))
+        quitAction.triggered.connect(self.close)
+        fileMenu.addAction(quitAction)
+
+        toggleAction = QAction(self.tr("Toggle State"), self)
         toggleAction.setShortcut("Ctrl+T")
         toggleAction.triggered.connect(self.toggleSelectedValue)
         editMenu.addAction(toggleAction)
@@ -36,7 +43,6 @@ class MainWindow(QMainWindow):
         self.graphicsView = QGraphicsView()
         # self.graphicsView.setMouseTracking(True)
         # self.graphicsView.viewport().installEventFilter(self)
-        self.graphicsView.setObjectName("graphicsView")
         self.graphicsView.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
         self.graphicsView.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
         self.graphicsView.setRenderHint(QPainter.Antialiasing)
