@@ -5,7 +5,7 @@ from PyQt5.QtCore import Qt
 
 from NodeView import NodeView
 from OrNode import OrNode, OrNodeView
-from AndNode import AndNode
+from AndNode import AndNode, AndNodeView
 from ValueNode import ValueNode, ValueNodeView
 
 
@@ -85,7 +85,7 @@ class MainWindow(QMainWindow):
         orNode = OrNodeView(3, valueNodeA, valueNodeB)
         orNode.setPos(300, 40)
 
-        orNode2 = OrNodeView(3, orNode, valueNodeC)
+        orNode2 = AndNodeView(3, orNode, valueNodeC)
         orNode2.setPos(400, 90)
         
         self.scene.addItem(orNode)
