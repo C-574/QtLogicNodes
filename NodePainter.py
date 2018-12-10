@@ -26,8 +26,7 @@ class NodePainter:
     def getNodeBounds(node):
         rect = NodePainter.getNodeDim(node)
 
-        halfPortRadius = PORT_RADIUS / 2
-        result = QRectF(rect.x() - halfPortRadius, rect.y(), rect.width() + PORT_RADIUS, rect.height())
+        result = QRectF(rect.x() - PORT_RADIUS, rect.y(), rect.width() + (2 * PORT_RADIUS), rect.height())
         return result
 
     @staticmethod
@@ -84,4 +83,3 @@ class NodePainter:
 
         textRect = QRectF((rect.width() - textBounds.width()) / 2.0, (rect.height() - textBounds.height()) / 2.0 - 3.5, textBounds.width(), textBounds.height())
         painter.drawText(textRect.bottomLeft(), node.title)
-      
