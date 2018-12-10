@@ -53,27 +53,6 @@ class MainWindow(QMainWindow):
 
         self.initScene()
 
-
-        # a = self.addNode(ValueNode(1))
-        # b = self.addNode(ValueNode(0))
-        # c = self.addNode(ValueNode(1))
-
-        # a.setPos(0, 0)
-        # b.setPos(0, 50)
-        # a.setPos(0, 100)
-
-        # node = self.addNode(OrNode([a.node, b.node, c.node]))
-        # node.setPos(200, 60)
-        # node.addPort(True)
-        # node.addPort(True)
-        # node.addPort(True)
-        # node.addPort(True)
-        # node.addPort(True)
-        # node.addPort(False)
-        # node.process()
-
-        #self.scene.setSceneRect(-1000, -1000, 1000, 1000)
-
     def initScene(self):
         valueNodeA = ValueNodeView(0)
         valueNodeA.setPos(0, 10)
@@ -99,18 +78,6 @@ class MainWindow(QMainWindow):
 
 
         valueNodeA.setValue(1)
-
-    def addNode(self, node):
-        title = ""
-        if isinstance(node, OrNode):
-            title = "OR"
-        elif isinstance(node, AndNode):
-            title = "AND"
-
-        view = NodeView(node, title)
-        self.scene.addItem(view)
-        
-        return view
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
