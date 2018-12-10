@@ -81,21 +81,24 @@ class MainWindow(QMainWindow):
         valueNodeB.setPos(0, 50)
         valueNodeC = ValueNodeView(0)
         valueNodeC.setPos(0, 80)
+        valueNodeD = ValueNodeView(1)
+        valueNodeD.setPos(0, 110)
 
-        orNode = OrNodeView(3, valueNodeA, valueNodeB)
+        orNode = OrNodeView([valueNodeA, valueNodeB])
         orNode.setPos(300, 40)
 
-        orNode2 = AndNodeView(3, orNode, valueNodeC)
-        orNode2.setPos(400, 90)
+        andNode = AndNodeView([orNode, valueNodeC, valueNodeD])
+        andNode.setPos(400, 90)
         
         self.scene.addItem(orNode)
-        self.scene.addItem(orNode2)
+        self.scene.addItem(andNode)
         self.scene.addItem(valueNodeA)
         self.scene.addItem(valueNodeB)
         self.scene.addItem(valueNodeC)
+        self.scene.addItem(valueNodeD)
+
 
         valueNodeA.setValue(1)
-        orNode.onDataChanged(0)
 
     def addNode(self, node):
         title = ""
