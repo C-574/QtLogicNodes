@@ -16,7 +16,6 @@ class MainWindow(QMainWindow):
         if len(selectedItems) >= 1:
             node = selectedItems[0]
             node.setValue(not node.data.value)
-            node.onDataChanged(0)
         
 
     def __init__(self):
@@ -54,30 +53,22 @@ class MainWindow(QMainWindow):
         self.initScene()
 
     def initScene(self):
-        valueNodeA = ValueNodeView(0)
+        valueNodeA = ValueNodeView(self.scene, 1)
         valueNodeA.setPos(0, 10)
-        valueNodeB = ValueNodeView(0)
+        valueNodeB = ValueNodeView(self.scene, 0)
         valueNodeB.setPos(0, 50)
-        valueNodeC = ValueNodeView(0)
-        valueNodeC.setPos(0, 80)
-        valueNodeD = ValueNodeView(1)
-        valueNodeD.setPos(0, 110)
+        valueNodeC = ValueNodeView(self.scene, 0)
+        valueNodeC.setPos(0, 110)
+        valueNodeD = ValueNodeView(self.scene, 1)
+        valueNodeD.setPos(0, 150)
+        valueNodeE = ValueNodeView(self.scene, 0)
+        valueNodeE.setPos(0, 250)
 
-        orNode = OrNodeView([valueNodeA, valueNodeB])
+        orNode = OrNodeView(self.scene, [valueNodeA, valueNodeB])
         orNode.setPos(300, 40)
 
-        andNode = AndNodeView([orNode, valueNodeC, valueNodeD])
+        andNode = AndNodeView(self.scene, [orNode, valueNodeC, valueNodeD, valueNodeE])
         andNode.setPos(400, 90)
-        
-        self.scene.addItem(orNode)
-        self.scene.addItem(andNode)
-        self.scene.addItem(valueNodeA)
-        self.scene.addItem(valueNodeB)
-        self.scene.addItem(valueNodeC)
-        self.scene.addItem(valueNodeD)
-
-
-        valueNodeA.setValue(1)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

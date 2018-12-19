@@ -18,13 +18,15 @@ class OrNode(LogicNode):
 
 
 class OrNodeView(NodeView):
-    def __init__(self, inputs, parent=None):
+    def __init__(self, scene, inputs, parent=None):
         super().__init__(OrNode(None), "OR", parent)
 
         # Add all available input ports.
         for index, inputNode in enumerate(inputs):
             inputNode.dataChanged.connect(self.onDataChanged)
             self.setValue(index, inputNode.data)
+
+        scene.addItem(self)
 
     def setValue(self, portIndex, value):
         self.data.setInput(portIndex, value)

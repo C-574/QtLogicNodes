@@ -22,6 +22,7 @@ class NodeView(QGraphicsObject):
         pass
 
     def onDataChanged(self, portIndex):
+        print("Updating " + self.title)
         self.dataChanged.emit(portIndex)
         self.data.process()
         self.update()

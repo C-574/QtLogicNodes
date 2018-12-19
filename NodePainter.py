@@ -3,7 +3,7 @@ from PyQt5.QtGui import QColor, QPen, QFontMetrics
 
 PORT_RADIUS = 5
 NODE_WIDTH = 50
-VERTICAL_PADDING = 10
+VERTICAL_PADDING = PORT_RADIUS * 2
 
 class NodePainter:
 
