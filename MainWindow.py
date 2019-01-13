@@ -74,4 +74,7 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     window = MainWindow()
     window.show()
+
+    # This will raise an exception to exit from python but will be caught by the debugger.
+    # For now just uncheck 'Uncaught Exceptions' but that is just a workaround.
     sys.exit(app.exec_())
