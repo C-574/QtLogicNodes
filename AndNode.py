@@ -15,7 +15,7 @@ class AndNode(LogicNode):
         self.value = result
         return result
 
-    
+
 class AndNodeView(NodeView):
     def __init__(self, scene, inputs, parent=None):
         super().__init__(AndNode(None), "AND", parent)

@@ -16,7 +16,7 @@ class NodePainter:
 
         if isOutput:
             x += NODE_WIDTH
-  
+
         y += index * (PORT_RADIUS + VERTICAL_PADDING)
 
         result = QPointF(x, y)
@@ -72,7 +72,7 @@ class NodePainter:
         for index, port in enumerate(node.data.inputs):
             NodePainter.drawPort(painter, False, index, node.data.getInput(index).value)
 
-        #for index, port in enumerate(node.node.value):
+        # for index, port in enumerate(node.node.value):
         #    NodePainter.drawPort(painter, False, index, node.data.getOutput(index))
         NodePainter.drawPort(painter, True, 0, node.data.getOutput(0))
 

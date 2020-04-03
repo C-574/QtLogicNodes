@@ -14,7 +14,7 @@ class MainWindow(QMainWindow):
         selectedItems = self.scene.selectedItems()
         if len(selectedItems) >= 1:
             node = selectedItems[0]
-            node.setValue(not node.data.value)        
+            node.setValue(not node.data.value)
 
     def __init__(self):
         super().__init__()
@@ -43,7 +43,7 @@ class MainWindow(QMainWindow):
         self.graphicsView.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
         self.graphicsView.setRenderHint(QPainter.Antialiasing)
         self.setCentralWidget(self.graphicsView)
-        
+
         self.scene = QGraphicsScene()
         self.graphicsView.setScene(self.scene)
 

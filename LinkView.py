@@ -7,7 +7,7 @@ from NodePainter import NodePainter
 class LinkView(QGraphicsObject):
     def __init__(self, fromNode, fromPortIndex, toNode, toPortIndex, parent=None):
         super().__init__(parent=parent)
-        
+
         self.fromNode = fromNode
         self.fromPortIndex = fromPortIndex
 
