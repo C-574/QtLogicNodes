@@ -1,8 +1,6 @@
-from PyQt5.QtCore import pyqtSlot
-from PyQt5.QtWidgets import QGraphicsScene
 from NodeView import NodeView
-from LinkView import LinkView
 from LogicNode import LogicNode
+
 
 class AndNode(LogicNode):
     def __init__(self, inputs):
@@ -26,8 +24,8 @@ class AndNodeView(NodeView):
         for inputPortIndex, inputNode in enumerate(inputs):
             inputNode.dataChanged.connect(self.onDataChanged)
             self.setValue(inputPortIndex, inputNode.data)
-            #link = LinkView(self, inputPortIndex, inputNode, 0)
-            #scene.addItem(link)
+            # link = LinkView(self, inputPortIndex, inputNode, 0)
+            # scene.addItem(link)
 
         scene.addItem(self)
 

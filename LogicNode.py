@@ -8,6 +8,7 @@
 #  1   1    0   1
 #  1   1    1   1
 
+
 class LogicNode:
     def __init__(self, inputs, value):
         if inputs is None:
@@ -31,11 +32,11 @@ class LogicNode:
     def getInput(self, portIndex):
         if portIndex >= len(self.inputs):
             return None
-        
+
         return self.inputs[portIndex]
 
     def getOutput(self, portIndex):
-        return self.value    
+        return self.value
 
 
 # def testNodeLogic():
@@ -53,5 +54,3 @@ class LogicNode:
 #     r = abcd.process()
 
 #     print("Result: " + str(r))
- 
-

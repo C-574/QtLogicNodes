@@ -1,12 +1,11 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QGraphicsView, QGraphicsScene, QAction
-from PyQt5.QtGui import QPainter, QColor, QFont, QKeySequence
+from PyQt5.QtWidgets import QApplication, QMainWindow, QGraphicsScene, QGraphicsView, QAction
+from PyQt5.QtGui import QPainter, QKeySequence
 from PyQt5.QtCore import Qt
 
-from NodeView import NodeView
-from OrNode import OrNode, OrNodeView
-from AndNode import AndNode, AndNodeView
-from ValueNode import ValueNode, ValueNodeView
+from OrNode import OrNodeView
+from AndNode import AndNodeView
+from ValueNode import ValueNodeView
 
 
 class MainWindow(QMainWindow):
@@ -15,8 +14,7 @@ class MainWindow(QMainWindow):
         selectedItems = self.scene.selectedItems()
         if len(selectedItems) >= 1:
             node = selectedItems[0]
-            node.setValue(not node.data.value)
-        
+            node.setValue(not node.data.value)        
 
     def __init__(self):
         super().__init__()
@@ -37,7 +35,6 @@ class MainWindow(QMainWindow):
         toggleAction.setShortcut("Ctrl+T")
         toggleAction.triggered.connect(self.toggleSelectedValue)
         editMenu.addAction(toggleAction)
-
 
         self.graphicsView = QGraphicsView()
         # self.graphicsView.setMouseTracking(True)
@@ -67,8 +64,14 @@ class MainWindow(QMainWindow):
         orNode = OrNodeView(self.scene, [valueNodeA, valueNodeB])
         orNode.setPos(300, 40)
 
-        andNode = AndNodeView(self.scene, [orNode, valueNodeC, valueNodeD, valueNodeE])
+        andNode = AndNodeView(self.scene, [
+            orNode,
+            valueNodeC,
+            valueNodeD,
+            valueNodeE
+        ])
         andNode.setPos(400, 90)
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

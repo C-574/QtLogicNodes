@@ -1,6 +1,6 @@
-from PyQt5.QtCore import pyqtSlot
 from LogicNode import LogicNode
 from NodeView import NodeView
+
 
 class OrNode(LogicNode):
     def __init__(self, inputs):
@@ -14,7 +14,6 @@ class OrNode(LogicNode):
 
         self.value = result
         return result
-
 
 
 class OrNodeView(NodeView):

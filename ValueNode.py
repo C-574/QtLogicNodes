@@ -1,6 +1,6 @@
-from PyQt5.QtCore import pyqtSlot
 from LogicNode import LogicNode
 from NodeView import NodeView
+
 
 class ValueNode(LogicNode):
     def __init__(self, value):
@@ -8,6 +8,7 @@ class ValueNode(LogicNode):
 
     def process(self):
         return self.value
+
 
 class ValueNodeView(NodeView):
     def __init__(self, scene, value, parent=None):

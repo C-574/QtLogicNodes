@@ -1,8 +1,8 @@
-from PyQt5.QtCore import QRectF, pyqtSignal
+from PyQt5.QtCore import pyqtSignal
 from PyQt5.QtWidgets import QGraphicsObject
-from PyQt5.QtCore import Qt
 
 from NodePainter import NodePainter
+
 
 class NodeView(QGraphicsObject):
 
@@ -32,8 +32,7 @@ class NodeView(QGraphicsObject):
         return bounds
 
     def paint(self, painter, option, widget):
-        rect = self.boundingRect()
-        
+        # rect = self.boundingRect()
 
         # Draw the bouds for debugging
         # painter.drawRect(NodePainter.getNodeBounds(self.node))

@@ -5,6 +5,7 @@ PORT_RADIUS = 5
 NODE_WIDTH = 50
 VERTICAL_PADDING = PORT_RADIUS * 2
 
+
 class NodePainter:
 
     @staticmethod
@@ -15,11 +16,11 @@ class NodePainter:
 
         if isOutput:
             x += NODE_WIDTH
-        
+  
         y += index * (PORT_RADIUS + VERTICAL_PADDING)
 
         result = QPointF(x, y)
-        
+
         return result
 
     @staticmethod
@@ -81,5 +82,6 @@ class NodePainter:
         painter.setPen(QColor(0, 0, 0, 128))
         painter.setBrush(QColor(0, 0, 0, 128))
 
-        textRect = QRectF((rect.width() - textBounds.width()) / 2.0, (rect.height() - textBounds.height()) / 2.0 - 3.5, textBounds.width(), textBounds.height())
+        textRect = QRectF((rect.width() - textBounds.width()) / 2.0, (rect.height() - textBounds.height()) / 2.0 - 3.5,
+                          textBounds.width(), textBounds.height())
         painter.drawText(textRect.bottomLeft(), node.title)

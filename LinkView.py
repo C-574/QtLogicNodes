@@ -1,8 +1,8 @@
-from PyQt5.QtCore import QRectF, QPointF
+from PyQt5.QtCore import QPointF
 from PyQt5.QtWidgets import QGraphicsObject
-from PyQt5.QtCore import Qt
 
 from NodePainter import NodePainter
+
 
 class LinkView(QGraphicsObject):
     def __init__(self, fromNode, fromPortIndex, toNode, toPortIndex, parent=None):
